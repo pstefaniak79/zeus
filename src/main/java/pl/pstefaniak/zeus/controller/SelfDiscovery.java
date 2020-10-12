@@ -11,7 +11,9 @@ public class SelfDiscovery {
     public String selfDiscovery() {
         try {
             InetAddress ip = InetAddress.getLocalHost();
-            return "hostName/ip=" + ip;
+            String userHome = System.getProperty("user.home");
+            String userDir = System.getProperty("user.dir");
+            return "hostName/ip=" + ip + "| userHome=" + userHome + "| userDir=" + userDir;
         } catch (Exception e) {
         }
         return "cannot obtain server ip!";
