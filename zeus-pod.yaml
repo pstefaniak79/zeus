@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: zeus
+spec:
+  containers:
+  - image: pstefaniak79/zeus:latest
+    name: zeus
+    volumeMounts:
+      - name: application.conf
+              mountPath: /zeus/conf
+volumes:
+  - name: application.conf
+    configMap:
+      name: application.conf
+

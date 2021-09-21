@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: zeus-rs
+  labels:
+    app: zeus-rs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zeus-rs
+  template:
+    metadata:
+      labels:
+        app: zeus-rs
+    spec:
+      containers:
+      - name: zeus
+        image: pstefaniak79/zeus:latest
+        ports:
+        - containerPort: 8201
+        resources:
+          requests:
+                memory: 50Micpu: 100m

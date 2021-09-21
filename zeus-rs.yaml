@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: zeus-rs
+  labels:
+    app: zeus-rs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zeus-rs
+  template:
+    metadata:
+      labels:
+        app: zeus-rs
+    spec:
+      containers:
+      - name: zeus
+        image: pstefaniak79/zeus:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+        volumeMounts:
+          - name: application-conf
+            mountPath: /usr/local/tomcat/conf/zeus/config
+      volumes:
+        - name: application-conf
+          configMap:
+            name: application-conf-file

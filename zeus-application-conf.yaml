@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: application-conf-file
+data:
+  application.properties: |
+    app_name: FromConfigMap
